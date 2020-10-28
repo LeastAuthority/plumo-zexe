@@ -193,7 +193,7 @@ macro_rules! impl_sw_batch_affine {
             }
 
             #[inline]
-            pub fn batch_add_in_place(bases: &mut [Self], other: &mut [Self], index: &[(u32, u32)]) {
+           fn batch_add_in_place(bases: &mut [Self], other: &mut [Self], index: &[(u32, u32)]) {
                 let mut inversion_tmp = P::BaseField::one();
                 let mut half = None;
 
@@ -227,7 +227,7 @@ macro_rules! impl_sw_batch_affine {
             }
 
             #[inline]
-            pub fn batch_add_in_place_same_slice(bases: &mut [Self], index: &[(u32, u32)]) {
+            fn batch_add_in_place_same_slice(bases: &mut [Self], index: &[(u32, u32)]) {
                 let mut inversion_tmp = P::BaseField::one();
                 let mut half = None;
 
