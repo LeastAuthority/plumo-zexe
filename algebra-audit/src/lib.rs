@@ -14,14 +14,9 @@ mod tests {
 
     #[test]
     fn batch_add_double() {
-        type Curve = GroupAffine<Parameters>;
+        type Group = GroupAffine<Parameters>;
 
-        let G = Curve{
-            infinity: false,
-            x: Gx,
-            y: Gy,
-            _params: {},
-        };
+        let G = Group::new(Gx, Gy, false);
 
         assert_eq!(2 + 2, 4);
     }
