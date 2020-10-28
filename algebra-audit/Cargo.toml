@@ -1,0 +1,13 @@
+[package]
+name = "algebra-audit"
+version = "0.1.0"
+authors = ["keks <keks@cryptoscope.co>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+algebra-core = { path = "../algebra-core", default-features = false }
+algebra = { path = "../algebra", default-features = false, features = [ "std", "bw6_761" ] }
+
+

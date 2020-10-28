@@ -2,6 +2,7 @@
 
 members = [
     "algebra-core",
+    "algebra-audit",
     "algebra",
     "algebra-benches",
     "bench-utils",

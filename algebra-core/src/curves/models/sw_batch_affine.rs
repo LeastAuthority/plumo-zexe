@@ -612,3 +612,21 @@ macro_rules! impl_sw_batch_affine {
         }
     };
 }
+
+/*
+#[cfg(test)]
+mod audit_tests {
+    use crate::curves::models::bw6::g1::G1Affine as GroupAffine;
+
+    #[test]
+    fn add_in_place_mutation() {
+        /*
+         *  1.) define three slices of curve elements bases1, bases2 and bases3. All of them containing identical values, but different memory storage (e.g not referencing the same actual values in RAM)
+         *  2.) comute batch_add_in_place(bases1, bases2)
+         *  3.) compute batch_add_in_place_same_slice(bases3)
+         *  4.) assert(result1 == result2) (edited) 
+         * 
+         */
+    }
+}
+*/
