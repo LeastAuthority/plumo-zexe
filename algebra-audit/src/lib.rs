@@ -24,7 +24,23 @@ mod tests {
     }
 
     #[test]
-    fn batch_add_in_place_reuse_bases_0() {
+    fn batch_add_more_than_once_same_slice() {
+       
+        type Group = GroupAffine<Parameters>;
+        let G = Group::new(Gx, Gy, false);
+
+        let mut group_elem_bases = [G + G, G + G + G];
+        let mut group_elem_bases_steps = [G + G, G + G + G];
+
+       // BatchGroupArithmetic::batch_add_in_place_same_slice(&mut group_elem_bases, &[(0,0),(0,1)]);
+        BatchGroupArithmetic::batch_add_in_place_same_slice(&mut group_elem_bases_steps, &[(1,0)]);
+        BatchGroupArithmetic::batch_add_in_place_same_slice(&mut group_elem_bases_steps, &[(1,1)]);
+        assert_eq!(group_elem_bases_steps[1], G+G+G+G+G+G+G);
+     //   assert_eq!(group_elem_bases[0], G+G+G+G+G+G+G);
+    }
+
+    #[test]
+   fn batch_add_in_place_reuse_bases_0() {
         type Group = GroupAffine<Parameters>;
 
         let G = Group::new(Gx, Gy, false);
