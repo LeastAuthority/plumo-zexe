@@ -31,4 +31,26 @@ mod tests {
         assert_eq!(elems2, elems4);
     }
 
+
+    #[test]
+    fn batch_add_more_than_once() {
+        type Group = GroupAffine<Parameters>;
+
+        let G = Group::new(Gx,Gy,false);
+
+        let mut group_elem_1 = [G+G, G+G+G];
+        let mut group_elem_2 = [G+G, G]; //made several copies because at some point they say that the second parameter to the function becomes a junk value after the function was called
+        let mut group_elem_4 = [G+G, G];
+        let mut group_elem_5 = [G+G, G];
+        let mut group_elem_3 = [G+G, G+G+G];
+
+        BatchGroupArithmetic::batch_add_in_place(&mut group_elem_1, &mut group_elem_2, &[(0,0), (0,1)]);
+        BatchGroupArithmetic::batch_add_in_place(&mut group_elem_3, &mut group_elem_4, &[(0,0)]);
+        BatchGroupArithmetic::batch_add_in_place(&mut group_elem_3, &mut group_elem_5, &[(0,1)]);
+
+        // Asserts if one call of batch_add_in_place with multiple indices results in the same
+        // thing as two successive function calls with different indices.
+        assert_eq!(group_elem_1, group_elem_3);
+    }
+
 }
