@@ -58,3 +58,20 @@ pub type G1Affine = bw6::G1Affine<Parameters>;
 pub type G1Projective = bw6::G1Projective<Parameters>;
 pub type G2Affine = bw6::G2Affine<Parameters>;
 pub type G2Projective = bw6::G2Projective<Parameters>;
+
+//#[cfg(test)]
+mod audittest {
+#![allow(unused_imports)]
+    use algebra_core::curves::bw6::BW6Parameters as P;
+
+    #[test]
+    fn print_g1_lambda() {
+       println!("{}", <<super::Parameters as P>::G1Parameters as crate::curves::GLVParameters>::LAMBDA);
+       println!("{:?}", <<super::Parameters as P>::G1Parameters as crate::curves::GLVParameters>::LAMBDA);
+       panic!("fail to test to see the text");
+       /* This prints:
+        * Fp384 "(000000000000000009B3AF05DD14F6EC619AAF7D34594AABC5ED1347970DEC00452217CC900000008508C00000000001)"
+        * Fp384(BigInteger384([15766275933608376691, 15635974902606112666, 1934946774703877852, 18129354943882397960, 15437979634065614942, 101285514078273488]))
+        */
+    }
+}
