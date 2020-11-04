@@ -353,5 +353,5 @@ mod tests {
             a,
         );
         assert_eq!(a, ptr::null());
-    } */
+    }  */
 }
